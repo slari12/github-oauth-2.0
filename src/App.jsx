@@ -5,9 +5,6 @@ function App() {
   const [count, setCount] = useState(0);
   const [userData, setUserData] = useState(null);
 
-  const CLIENT_ID = "Ov23likPgoMHzXasmekl";
-  const CLIENT_SECRET = "7b5344ef6ca2d9ac1179492c267fabcc96bbdbea";
-
   const loginGithub = () => {
     const redirectUri = "http://localhost:5173/auth/callback";
     const authUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${redirectUri}`;
