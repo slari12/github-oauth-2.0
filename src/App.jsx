@@ -8,7 +8,7 @@ function App() {
   const loginGithub = () => {
     const redirectUri = "http://localhost:5173/auth/callback";
     const authUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${redirectUri}`;
-    window.location.href = authUrl;
+    window.open(authUrl, "_blank");
   };
   const handleLogin = async () => {
     try {
@@ -26,7 +26,6 @@ function App() {
         }
       );
       const access_token = tokenResponse.data.access_token;
-
       const userRes = await axios.get("https://api.github.com/user", {
         header: {
           Authorization: `Bearer ${access_token}`,
@@ -49,23 +48,14 @@ function App() {
 
   return (
     <>
-      {!userData ? (
-        <a href="" target="_blank">
-          <button
-            className="bg-green-900 bold px-10 py-3 mb-6 rounded-md bold hover:bg-green-800 hover:underline"
-            onClick={loginGithub}
-          >
-            Login with Github
-          </button>
-        </a>
-      ) : (
-        <div>
-          <p className="text-white text-center">
-            welcome back, {userData.name}
-          </p>
-          <p className="text-white text-center">{userData.bio}</p>
-        </div>
-      )}
+      <a href="" target="_blank">
+        <button
+          className="bg-green-900 bold px-10 py-3 mb-6 rounded-md bold hover:bg-green-800 hover:underline"
+          onClick={loginGithub}
+        >
+          Login with Github
+        </button>
+      </a>
     </>
   );
 }
