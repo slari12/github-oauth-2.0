@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import "./index.css";
 
 function App() {
-  const [count, setCount] = useState(0);
   const [userData, setUserData] = useState(null);
 
   const loginGithub = () => {
@@ -10,32 +9,32 @@ function App() {
     const authUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${redirectUri}`;
     window.open(authUrl, "_blank");
   };
-  const handleLogin = async () => {
-    try {
-      const tokenResponse = await axios.post(
-        "https://github.com/login/oauth/access_token",
-        {
-          params: {
-            client_id: CLIENT_ID,
-            client_secret: CLIENT_SECRET,
-            code: code,
-          },
-          headers: {
-            Accept: "aplication/json",
-          },
-        }
-      );
-      const access_token = tokenResponse.data.access_token;
-      const userRes = await axios.get("https://api.github.com/user", {
-        header: {
-          Authorization: `Bearer ${access_token}`,
-        },
-      });
-      setUserData(userRes.data);
-    } catch (error) {
-      console.error("error fetching data");
-    }
-  };
+  // const handleLogin = async () => {
+  //   try {
+  //     const tokenResponse = await axios.post(
+  //       "https://github.com/login/oauth/access_token",
+  //       {
+  //         params: {
+  //           client_id: CLIENT_ID,
+  //           client_secret: CLIENT_SECRET,
+  //           code: code,
+  //         },
+  //         headers: {
+  //           Accept: "aplication/json",
+  //         },
+  //       }
+  //     );
+  //     const access_token = tokenResponse.data.access_token;
+  //     const userRes = await axios.get("https://api.github.com/user", {
+  //       header: {
+  //         Authorization: `Bearer ${access_token}`,
+  //       },
+  //     });
+  //     setUserData(userRes.data);
+  //   } catch (error) {
+  //     console.error("error fetching data");
+  //   }
+  // };
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
