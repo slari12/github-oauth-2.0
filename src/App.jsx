@@ -46,7 +46,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <section className="flex flex-col items-center justify-center h-screen">
       <a href="" target="_blank">
         <button
           className="bg-green-900 bold px-10 py-3 mb-6 rounded-md bold hover:bg-green-800 hover:underline"
@@ -55,7 +55,7 @@ function App() {
           Login with Github
         </button>
       </a>
-    </>
+    </section>
   );
 }
 

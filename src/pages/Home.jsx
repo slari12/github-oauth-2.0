@@ -3,6 +3,7 @@ import { useLocation } from "react-router";
 import { Link } from "react-router";
 import axios from "axios";
 
+
 export default function Home() {
   const [user, setUser] = useState(null);
   const location = useLocation();
@@ -51,7 +52,7 @@ export default function Home() {
   }, []);
 
   return (
-    <section>
+    <section className="flex flex-col items-center justify-center h-screen">
       <div>Welcome to the Github Dashboard!</div>
       <p>{code} stored</p>
       <div className="flex justify-center gap-2">
